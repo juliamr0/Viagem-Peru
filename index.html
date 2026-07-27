@@ -235,3 +235,80 @@
             </div>
 
             <div class="food-card">
+                <div class="food-header">
+                    <span class="food-cat">Vale Sagrado (Ollanta)</span>
+                </div>
+                <div class="food-name">El Albergue</div>
+                <p class="food-note">Localizado na estação de trem. Perfeito para o almoço do Dia 07 antes de embarcar.</p>
+                <span class="food-tag">🚂 Comodidade Total</span>
+            </div>
+        </div>
+
+        <!-- AREQUIPA -->
+        <div class="geo-city-title">🍴 Arequipa</div>
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-header">
+                    <span class="food-cat">Alta Gastronomia</span>
+                </div>
+                <div class="food-name">Chicha</div>
+                <p class="food-note">Restaurante de Gastón Acurio focado em ingredientes locais de Arequipa.</p>
+            </div>
+            <div class="food-card">
+                <div class="food-header">
+                    <span class="food-cat">Nikkei / Sushi</span>
+                </div>
+                <div class="food-name">El Buda Profano</div>
+                <p class="food-note">Melhor sushi de Arequipa em um casarão de pedra vulcânica branca.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABA 3: LOGÍSTICA (INCLUINDO AS MALAS) -->
+    <div id="logistica" class="tab-content">
+        <div class="info-card">
+            <h3>🎒 A Estratégia das Malas</h3>
+            <p><b>Cusco → MP:</b> O trem NÃO aceita malas grandes. </p>
+            <ul>
+                <li>1. Deixe as malas grandes no guarda-volumes do hotel em Cusco (grátis).</li>
+                <li>2. Leve apenas uma mochila para os 2 dias (Ollanta + MP).</li>
+                <li>3. Recupere a mala grande ao voltar para Cusco no Dia 08.</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>💰 Dinheiro & Câmbio</h3>
+            <p>• Banco de la Nación (MultiRed) não cobra taxa para sacar até 400 soles.</p>
+            <p>• Leve dinheiro vivo para gorjetas de Free Tours.</p>
+            <p>• Cartão Astropay/Nomad/Wise funcionam bem em restaurantes.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🚑 Saúde na Altitude</h3>
+            <p>• Comprar balas de coca e "Sorojchi Pills" em qualquer farmácia de Cusco.</p>
+            <p>• Água de Florida: Cheirar para aliviar náuseas.</p>
+            <p>• Beber 3L de água por dia.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(tabName, elmnt) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).classList.add("active");
+        elmnt.classList.add("active");
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
