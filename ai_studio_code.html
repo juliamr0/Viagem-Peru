@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peru 2025 | Roteiro Completo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8A6D1F;
+            --primary-light: #F7ECD1;
+            --accent-guru: #1D9E75;
+            --accent-own: #378ADD;
+            --accent-rest: #D4537E;
+            --bg: #F9FAFB;
+            --surface: #ffffff;
+            --text-main: #1F2937;
+            --text-sub: #6B7280;
+            --border: #E5E7EB;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* Header */
+        header { background: linear-gradient(135deg, #2D2D2D, #000); color: white; padding: 40px 30px; border-radius: var(--radius); margin-bottom: 30px; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; letter-spacing: -1px; }
+        header p { opacity: 0.8; font-weight: 300; }
+
+        /* Quick Info Bar */
+        .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .prep-card { background: var(--surface); padding: 15px; border-radius: var(--radius); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .prep-card span { font-size: 24px; }
+        .prep-card div b { display: block; font-size: 14px; color: var(--primary); }
+        .prep-card div p { font-size: 12px; color: var(--text-sub); }
+
+        /* Timeline Items */
+        .city-section { margin-bottom: 40px; }
+        .city-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--primary); display: flex; align-items: center; gap: 10px; }
+        
+        .day-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 15px; overflow: hidden; display: grid; grid-template-columns: 80px 1fr; }
+        .day-sidebar { background: #f3f4f6; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid var(--border); font-weight: 700; color: var(--text-sub); }
+        .day-sidebar span { font-size: 10px; text-transform: uppercase; margin-top: 4px; }
+        .day-content { padding: 20px; }
+        
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+        .tag-guru { background: #E1F5EE; color: var(--accent-guru); }
+        .tag-own { background: #E6F1FB; color: var(--accent-own); }
+        .tag-rest { background: #FBEAF0; color: var(--accent-rest); }
+
+        .day-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; }
+        .day-desc { font-size: 14px; color: var(--text-sub); margin-bottom: 15px; }
+
+        /* Food Box */
+        .food-box { background: #FFFBEB; border: 1px solid #FEF3C7; padding: 12px; border-radius: 8px; font-size: 13px; }
+        .food-box b { color: #92400E; display: flex; align-items: center; gap: 5px; }
+
+        /* Info Blocks */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+        .info-card { background: var(--surface); padding: 25px; border-radius: var(--radius); border: 1px solid var(--border); }
+        .info-card h3 { margin-bottom: 15px; font-size: 1.1rem; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .info-card ul { list-style: none; }
+        .info-card ul li { font-size: 13px; margin-bottom: 8px; padding-left: 15px; position: relative; }
+        .info-card ul li::before { content: "•"; position: absolute; left: 0; color: var(--primary); }
+
+        .highlight-box { background: #F3F4F6; padding: 15px; border-radius: 8px; margin-top: 15px; font-size: 13px; }
+
+        @media (max-width: 600px) {
+            .day-card { grid-template-columns: 1fr; }
+            .day-sidebar { padding: 10px; flex-direction: row; gap: 10px; border-right: none; border-bottom: 1px solid var(--border); }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Peru 2025 🇵🇪</h1>
+        <p>15 dias de imersão gastronômica e cultural • Lima, Cusco & Arequipa</p>
+    </header>
+
+    <!-- Barra de Preparação (Dicas do PDF) -->
+    <div class="prep-grid">
+        <div class="prep-card">
+            <span>📶</span>
+            <div><b>Chip Airalo</b><p>Cupom: CABENAMALA</p></div>
+        </div>
+        <div class="prep-card">
+            <span>🛡️</span>
+            <div><b>Seguro Real</b><p>Cupom: CABENAMALA</p></div>
+        </div>
+        <div class="prep-card">
+            <span>🩺</span>
+            <div><b>Saúde Altitude</b><p>Eletroforese Hb antes de ir</p></div>
+        </div>
+        <div class="prep-card">
+            <span>💳</span>
+            <div><b>Câmbio Soles</b><p>Banco de la Nación (MultiRed)</p></div>
+        </div>
+    </div>
+
+    <!-- LIMA -->
+    <div class="city-section">
+        <div class="city-title">📍 Lima (3 Noites)</div>
+        
+        <div class="day-card">
+            <div class="day-sidebar">DIA 01<span>Chegada</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Logística</span>
+                <div class="day-title">Chegada e Miraflores</div>
+                <p class="day-desc">Transfer Aeroporto: <b>Airport Express</b> (guichê azul, Terminal 2, ~20 soles). Check-in em Miraflores. Passeio leve pelo Parque Alfredo Salazar e Larcomar.</p>
+                <div class="food-box">
+                    <b>🍽️ Jantar: Huaca Pucllana</b> - Em frente ao sítio arqueológico iluminado. Ceviche imperdível para começar com pé direito.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 02<span>Cultura</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Por conta</span>
+                <div class="day-title">Centro Histórico & Gastronomia</div>
+                <p class="day-desc">Manhã: Free Walking Tour (Civitatis). Plaza Mayor, Convento San Francisco (Catacumbas). Tarde: Parque Kennedy (gatinhos) e Barranco (Ponte dos Suspiros).</p>
+                <div class="food-box">
+                    <b>🍽️ Almoço: Pasaje José Olaya</b> (Opção barata no Centro) ou <b>Punto Azul</b> em Miraflores. <br>
+                    <b>🍽️ Jantar Chique: Maido ou Osaka</b> (Reserva com meses de antecedência!).
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 03<span>Full Day</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">Paracas & Huacachina</div>
+                <p class="day-desc">Saída às 04h. Passeio de barco nas Ilhas Ballestas + Oásis de Huacachina com buggies e sandboard. Retorno tarde da noite (~22h).</p>
+                <div class="food-box">
+                    <b>🍽️ Dica:</b> Almoço incluso no tour ou rápido em Ica. No retorno a Lima, peça algo leve pelo delivery ou <b>La Lucha Sanguchería</b>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSCO -->
+    <div class="city-section">
+        <div class="city-title">📍 Cusco & Vale Sagrado (8 Noites)</div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 04<span>Aclima</span></div>
+            <div class="day-content">
+                <span class="tag tag-rest">Descanso</span>
+                <div class="day-title">Voo para Cusco & Aclimatação</div>
+                <p class="day-desc">Voo matutino. Chegada em Cusco (3.400m). <b>Regra de Ouro:</b> Descanso total, chá de coca e muita água. Não faça esforço físico hoje.</p>
+                <div class="food-box">
+                    <b>🍽️ Almoço Leve:</b> Sopas ou pratos leves no hotel ou arredores da Plaza de Armas.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 05<span>City</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">City Tour Arqueológico</div>
+                <p class="day-desc">Qorikancha, Saqsaywaman, Qenqo e Tambomachay. Passeio de meio período que não exige tanto fôlego.</p>
+                <div class="food-box">
+                    <b>🍽️ Jantar: Morena Peruvian Kitchen</b> - Reservar! Excelente custo-benefício e comida moderna.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 06<span>Vale</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">Vale Sagrado (Pernoite em Ollanta)</div>
+                <p class="day-desc">Chinchero, Salineras de Maras e Moray. Termine o tour em <b>Ollantaytambo</b> para evitar o vai-e-vem cansativo para Cusco.</p>
+                <div class="food-box">
+                    <b>🍽️ Almoço:</b> Geralmente buffet em Urubamba (incluso no tour).
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 07<span>Trem</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Conforto</span>
+                <div class="day-title">Ollantaytambo → Águas Calientes</div>
+                <p class="day-desc">Manhã: Subida opcional ao Pinkuylluna. Tarde: Trem <b>Vistadome</b> para Águas Calientes. Noite na cidade base de Machu Picchu.</p>
+                <div class="food-box">
+                    <b>🍽️ Jantar: Poncho's</b> em Águas Calientes.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 08<span>M.P.</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">Machu Picchu (Circuito 2)</div>
+                <p class="day-desc">O grande dia! Tour guiado pela cidadela. Retorno a Cusco no trem Expedition ao final do dia.</p>
+                <div class="food-box">
+                    <b>🍽️ Dica:</b> Comprar o ingresso com 6 meses de antecedência no site oficial!
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 09<span>Folga</span></div>
+            <div class="day-content">
+                <span class="tag tag-rest">Estratégico</span>
+                <div class="day-title">Descanso em Cusco (Bairro San Blas)</div>
+                <p class="day-desc">Dia livre para "viver" a cidade. Visite o Mercado de San Pedro, o ChocoMuseo e as lojinhas de San Blas. Essencial para recuperar energia antes das montanhas.</p>
+                <div class="food-box">
+                    <b>🍽️ Almoço: Green Point</b> (Vegano delicioso com jardim) ou <b>Cicciolina</b>.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 10<span>Cores</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">Montanha Colorida (Palcoyo ou Vinicunca)</div>
+                <p class="day-desc"><b>Dica Pro:</b> Prefira <b>Palcoyo</b> se tiver medo da altitude. É mais plana, menos cheia e o visual é idêntico. Vinicunca exige muito esforço a 5.200m.</p>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 11<span>Lagoa</span></div>
+            <div class="day-content">
+                <span class="tag tag-guru">Guru Explorers</span>
+                <div class="day-title">Lagoa Humantay</div>
+                <p class="day-desc">Caminhada íngreme mas recompensadora. Retorno a Cusco para a última noite.</p>
+                <div class="food-box">
+                    <b>🍽️ Jantar Despedida: Chicha por Gastón Acurio</b> em Cusco.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AREQUIPA -->
+    <div class="city-section">
+        <div class="city-title">📍 Arequipa (3 Noites)</div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 12<span>Voo</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Transição</span>
+                <div class="day-title">Cusco → Arequipa</div>
+                <p class="day-desc">Voo para a "Cidade Branca". Check-in próximo à Plaza de Armas. Arequipa é mais baixa (2.300m), o que ajuda muito na respiração.</p>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 13<span>Cidade</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Civitatis/GYG</span>
+                <div class="day-title">Mosteiro Santa Catalina & Yanahuara</div>
+                <p class="day-desc">Visita guiada ao incrível Mosteiro de Santa Catalina (reserve 2h). Tarde no Mirante de Yanahuara para ver os vulcões.</p>
+                <div class="food-box">
+                    <b>🍽️ Jantar: El Buda Profano</b> (Sushi de alta qualidade em ambiente rústico).
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 14<span>Livre</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Relax</span>
+                <div class="day-title">Mercado San Camilo & San Lázaro</div>
+                <p class="day-desc">Dia para comprar temperos e lembrancinhas. Passeio pelo bairro mais antigo da cidade.</p>
+                <div class="food-box">
+                    <b>🍽️ Almoço:</b> Prove o <i>Rocoto Relleno</i> em uma picantería tradicional.
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-sidebar">DIA 15<span>Fim</span></div>
+            <div class="day-content">
+                <span class="tag tag-own">Retorno</span>
+                <div class="day-title">Arequipa → Lima → Brasil</div>
+                <p class="day-desc">Voo de conexão em Lima e retorno para casa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO DE DICAS CONSOLIDADAS -->
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>💊 Contra o Mal de Altitude (Soroche)</h3>
+            <ul>
+                <li><b>Exame:</b> Eletroforese de Hemoglobina (importante para detectar traços falciformes).</li>
+                <li><b>Farmácia:</b> Diamox (Acetazolamida) - consultar médico. Acetilcisteína para secreção.</li>
+                <li><b>Local:</b> Bala de coca (comprar no 1º dia em Cusco) e Água de Florida para cheirar.</li>
+                <li><b>Hidratação:</b> Beber 3L de água/dia. Evitar álcool nas primeiras 48h em altitude.</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>💰 Financeiro & Câmbio</h3>
+            <ul>
+                <li><b>Melhor Saque:</b> Banco de la Nación (MultiRed) - não cobra taxa para saques de até 400 soles.</li>
+                <li><b>Cartões:</b> Wise funciona bem, mas Astropay/Nomad têm sido citados com boas cotações.</li>
+                <li><b>Espécie:</b> Essencial para gorjetas de Free Tours e mercados locais.</li>
+                <li><b>App:</b> ATM Fee Saver (para conferir taxas atualizadas).</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>🏨 Hospedagens Sugeridas</h3>
+            <ul>
+                <li><b>Lima:</b> Hotel Fausto ou Naia (Miraflores).</li>
+                <li><b>Cusco:</b> Casa Cristobal Centenario (Pode ser barulhento) ou Tariq Boutique (San Blas - mais silencioso).</li>
+                <li><b>Ollantaytambo:</b> Tikawasi Ollanta 2.</li>
+                <li><b>Arequipa:</b> Buscar ao redor da Plaza de Armas ou Yanahuara.</li>
+            </ul>
+        </div>
+
+        <div class="info-card">
+            <h3>🎟️ Cupons & Contatos</h3>
+            <ul>
+                <li><b>Guru Explorers:</b> Contato direto via WhatsApp para fechar pacotes.</li>
+                <li><b>GetYourGuide:</b> LARAPGARCIA5</li>
+                <li><b>Seguro/Airalo:</b> CABENAMALA</li>
+                <li><b>Guia em Cusco:</b> Mario (+51 969 901 011) - indicação da Nuny.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <b>💡 Dica Extra do Especialista:</b> Como vocês amam comer, em Lima, não deixem de visitar o bairro de <b>Barranco</b> no final da tarde. Além da vibe artística, tem restaurantes excelentes como o <i>Isolina</i> e o <i>Mérito</i> (eleito um dos melhores do mundo).
+    </div>
+
+</div>
+
+</body>
+</html>
