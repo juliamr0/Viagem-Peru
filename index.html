@@ -7,114 +7,135 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-    /* Paleta Peruana */
     --peru-red: #B33C2E;
     --peru-ochre: #D18B47;
     --peru-stone: #4A443F;
     --peru-cream: #FDF8F3;
     --peru-turquoise: #2A9D8F;
     --peru-gold: #C89B3C;
-    
-    --bg: #F9F4F0; /* Cor de lã de alpaca */
+    --bg: #F9F4F0;
     --surface: #ffffff;
     --text-main: #2D241E;
     --text-sub: #6B5F56;
     --radius: 14px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; }
-
-/* Capa com Foto - Nova Estilização */
-header { 
-    position: relative;
-    height: 300px;
-    background: var(--peru-stone);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    border-bottom: 6px solid var(--peru-red);
-    color: white;
-    text-align: center;
+/* Configuração do Layout Lateral */
+body { 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg); 
+    color: var(--text-main); 
+    display: flex; 
+    flex-direction: row; 
+    min-height: 100vh; 
+    margin: 0;
 }
 
-header img {
+/* SIDEBAR - AQUI FICA SUA FOTO VERTICAL */
+aside {
+    width: 320px;
+    height: 100vh;
+    position: fixed;
+    left: 0; top: 0;
+    background: var(--peru-stone);
+    border-right: 6px solid var(--peru-red);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+aside img {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover;
-    opacity: 0.7; /* Escurece um pouco a foto para o texto aparecer */
+    object-fit: cover; /* Garante que a foto vertical preencha sem distorcer */
+    opacity: 0.7;
 }
 
-.header-content {
+.sidebar-content {
     position: relative;
     z-index: 2;
-    padding-bottom: 40px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    padding: 40px 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 80%);
+    color: white;
 }
 
-header h1 { font-size: 2.2rem; font-family: 'serif'; letter-spacing: -1px; }
-
-/* Navegação das Abas */
-.nav-tabs { 
-    display: flex; justify-content: center; gap: 8px; margin-top: -25px; 
-    padding: 0 10px; position: sticky; top: 10px; z-index: 100;
+/* MENU VERTICAL */
+.nav-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 40px;
 }
 
-.tab-btn { 
-    background: var(--surface); border: none; padding: 12px 18px; border-radius: 30px; 
-    font-weight: 700; font-size: 11px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    cursor: pointer; color: var(--text-sub); transition: 0.3s; text-transform: uppercase;
-}
-
-.tab-btn.active { background: var(--peru-red); color: white; }
-
-.container { max-width: 800px; margin: 20px auto; padding: 0 15px 100px 15px; }
-.tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 0.5s ease; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
-
-/* Cards do Roteiro (Acrescentando a Seta) */
-details { background: var(--surface); border-radius: var(--radius); margin-bottom: 12px; border: 1px solid #E5D6C8; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-summary { padding: 18px; list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; font-weight: 700; }
-summary::-webkit-details-marker { display: none; }
-
-/* A Setinha Visual que você pediu */
-summary::after { 
-    content: '▼'; 
-    margin-left: auto; 
-    color: var(--peru-ochre); 
-    font-size: 12px; 
+.tab-btn {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 20px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: left;
     transition: 0.3s;
+}
+
+.tab-btn.active { background: var(--peru-red); border-color: var(--peru-red); }
+
+/* ÁREA DO CONTEÚDO */
+main {
+    flex: 1;
+    margin-left: 320px; /* Deve ser igual à largura da sidebar */
+    padding: 40px 50px;
+}
+
+/* CORREÇÃO DA TAG GYG E SETINHA */
+.tag-gyg { background: #6B21A8 !important; color: white !important; }
+
+summary { position: relative; padding-right: 40px; list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+summary::after { 
+    content: '▼'; position: absolute; right: 20px; color: var(--peru-ochre); 
+    font-size: 12px; transition: 0.3s; 
 }
 details[open] summary::after { transform: rotate(180deg); }
 
-.day-num-box { 
-    background: var(--peru-cream); color: var(--peru-red); min-width: 55px; height: 55px; 
-    border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-    font-size: 10px; border: 1px solid var(--peru-red);
+/* Ajuste Mobile */
+@media (max-width: 900px) {
+    body { flex-direction: column; }
+    aside { width: 100%; height: 350px; position: relative; border-right: none; border-bottom: 6px solid var(--peru-red); }
+    main { margin-left: 0; padding: 20px; }
+    .nav-tabs { flex-direction: row; overflow-x: auto; margin-top: 20px; }
 }
-
-.day-tag { font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 6px; display: inline-block; margin-bottom: 5px; color: white; }
-.tag-guru { background: var(--peru-turquoise); }
-.tag-own { background: var(--peru-ochre); }
-.tag-voo { background: var(--peru-stone); }
-
-.expanded-content { padding: 0 20px 20px 20px; border-top: 1px solid #F1F5F9; font-size: 14px; color: var(--text-sub); }
-.tip-box { background: #FFFBEB; border-radius: 10px; padding: 12px; margin-top: 15px; border-left: 4px solid var(--peru-gold); color: #92400E; }
     </style>
 </head>
 <body>
 
-<header>
-    <!-- Substitua 'foto-peru.jpg' pelo nome exato da foto que você subir no seu Github -->
-    <img src="foto-peru.jpg" alt="Capa Peru">
-    <div class="header-content">
-        <h1>Peru 2025</h1>
-        <p>Aventura, Cultura e Gastronomia</p>
+    <aside>
+    <!-- Sua foto vertical -->
+    <img src="foto-peru.jpg" alt="Viagem Peru">
+    <div class="sidebar-content">
+        <div>
+            <h1 style="font-family: serif; font-size: 2.2rem; line-height: 1;">Peru 2025</h1>
+            <p style="font-size: 12px; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase;">A dois</p>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab('roteiro', this)">📅 Roteiro</button>
+            <button class="tab-btn" onclick="openTab('gastronomia', this)">🍴 Gastronomia</button>
+            <button class="tab-btn" onclick="openTab('logistica', this)">🎒 Logística</button>
+        </div>
+        
+        <p style="font-size: 10px; opacity: 0.6;">Cultura & Gastronomia</p>
     </div>
-</header>
+</aside>
+<main>
 
 <div class="nav-tabs">
     <button class="tab-btn active" onclick="openTab('roteiro', this)">📅 Roteiro</button>
@@ -469,6 +490,7 @@ details[open] summary::after { transform: rotate(180deg); }
     </div>
 
 </div>
+    </main>
 
 <script>
     function openTab(tabName, elmnt) {
