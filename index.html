@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peru 2025 | Dashboard de Viagem</title>
+    <title>Peru 2025 | Roteiro Completo</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,38 +16,23 @@
             --accent-guru: #1D9E75;
             --accent-own: #378ADD;
             --accent-rest: #D4537E;
-            --radius: 16px;
+            --radius: 12px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; }
 
-        /* Header e Tabs */
-        header { background: #000; color: white; padding: 30px 20px 80px 20px; text-align: center; }
-        header h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        header { background: #000; color: white; padding: 40px 20px 80px 20px; text-align: center; }
         
         .nav-tabs { 
-            display: flex; 
-            justify-content: center; 
-            gap: 10px; 
-            margin-top: -50px; 
-            padding: 0 10px;
-            position: sticky;
-            top: 10px;
-            z-index: 100;
+            display: flex; justify-content: center; gap: 8px; margin-top: -45px; 
+            padding: 0 10px; position: sticky; top: 10px; z-index: 100;
         }
         
         .tab-btn { 
-            background: var(--surface); 
-            border: none; 
-            padding: 12px 20px; 
-            border-radius: 30px; 
-            font-weight: 600; 
-            font-size: 13px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.3s;
-            color: var(--text-sub);
+            background: var(--surface); border: none; padding: 12px 18px; border-radius: 30px; 
+            font-weight: 600; font-size: 13px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer; color: var(--text-sub); transition: 0.3s;
         }
 
         .tab-btn.active { background: var(--primary); color: white; }
@@ -58,45 +43,52 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Cards Gastronomia */
-        .geo-city-title { font-size: 1.4rem; font-weight: 700; margin: 30px 0 15px 0; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
-        .food-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-        .food-card { background: var(--surface); border-radius: var(--radius); padding: 18px; border: 1px solid #E5E7EB; }
-        .food-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-        .food-cat { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-dark); background: #FEF3C7; padding: 2px 8px; border-radius: 4px; }
-        .food-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
-        .food-note { font-size: 13px; color: var(--text-sub); margin-top: 5px; }
-        .food-tag { display: inline-block; font-size: 11px; margin-top: 8px; color: #059669; font-weight: 600; }
+        .city-divider { font-size: 1.2rem; font-weight: 700; margin: 30px 0 15px 5px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
 
-        /* Roteiro Cards */
-        .day-card { background: var(--surface); border-radius: var(--radius); margin-bottom: 15px; overflow: hidden; display: flex; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .day-num { background: #F9FAFB; padding: 20px; font-weight: 800; border-right: 1px solid #F3F4F6; display: flex; flex-direction: column; align-items: center; min-width: 70px; }
-        .day-body { padding: 18px; flex: 1; }
-        .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; margin-bottom: 8px; }
-        .tag-guru { background: #D1FAE5; color: #065F46; }
-        .tag-own { background: #DBEAFE; color: #1E40AF; }
-
-        /* Info Logística */
-        .info-card { background: var(--surface); padding: 20px; border-radius: var(--radius); margin-bottom: 15px; }
-        .info-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--primary-dark); }
-        .info-card p, .info-card li { font-size: 13px; color: var(--text-sub); margin-bottom: 5px; }
-
-        /* Estilo das abas específicas de cidade na gastronomia */
-        .city-nav { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px; }
-        .city-pill { white-space: nowrap; padding: 6px 15px; border-radius: 20px; background: #E5E7EB; font-size: 12px; font-weight: 600; cursor: pointer; }
-        .city-pill.active { background: var(--primary-dark); color: white; }
-
-        @media (max-width: 600px) {
-            .nav-tabs { gap: 5px; }
-            .tab-btn { padding: 10px 15px; font-size: 12px; }
+        /* Estilo do Roteiro Expansível */
+        details { background: var(--surface); border-radius: var(--radius); margin-bottom: 12px; border: 1px solid #E5E7EB; overflow: hidden; }
+        summary { 
+            padding: 18px; list-style: none; cursor: pointer; display: flex; align-items: center; gap: 15px;
+            font-weight: 700; font-size: 14px; transition: background 0.2s;
         }
+        summary:hover { background: #F9FAFB; }
+        summary::-webkit-details-marker { display: none; }
+        
+        .day-badge { 
+            background: #F3F4F6; color: var(--text-main); min-width: 50px; height: 50px; 
+            border-radius: 10px; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; font-size: 11px;
+        }
+        .day-badge b { font-size: 16px; display: block; line-height: 1; }
+
+        .day-info { flex: 1; }
+        .day-tag { font-size: 10px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
+        
+        /* Cores das Tags */
+        .t-guru { background: #D1FAE5; color: #065F46; }
+        .t-own { background: #DBEAFE; color: #1E40AF; }
+        .t-rest { background: #FCE7F3; color: #9D174D; }
+
+        .expanded-content { padding: 0 18px 18px 18px; border-top: 1px solid #F3F4F6; font-size: 14px; color: var(--text-sub); }
+        .expanded-content b { color: var(--text-main); }
+        .locais-lista { margin-top: 10px; padding-left: 18px; }
+        .locais-lista li { margin-bottom: 5px; }
+
+        .food-tip { background: #FFFBEB; border-left: 4px solid #F59E0B; padding: 10px; margin-top: 15px; border-radius: 4px; color: #92400E; }
+
+        /* Estilo Gastronomia */
+        .food-card { background: var(--surface); border-radius: var(--radius); padding: 18px; border: 1px solid #E5E7EB; margin-bottom: 15px; }
+        .food-cat { font-size: 10px; font-weight: 800; text-transform: uppercase; background: #FEF3C7; padding: 2px 8px; border-radius: 4px; color: var(--primary-dark); }
+        
+        /* Estilo Logística */
+        .info-card { background: var(--surface); padding: 20px; border-radius: var(--radius); margin-bottom: 15px; border-left: 5px solid var(--primary); }
     </style>
 </head>
 <body>
 
 <header>
     <h1>Peru 2025 🇵🇪</h1>
-    <p>A dois • Comida & Cultura</p>
+    <p>Roteiro a dois • 15 Dias • Gastronomia & Conforto</p>
 </header>
 
 <div class="nav-tabs">
@@ -107,187 +99,306 @@
 
 <div class="container">
 
-    <!-- ABA 1: ROTEIRO -->
+    <!-- ABA ROTEIRO -->
     <div id="roteiro" class="tab-content active">
-        <div class="geo-city-title">📍 Lima</div>
-        <div class="day-card">
-            <div class="day-num">01<span>Cheg</span></div>
-            <div class="day-body">
-                <span class="tag tag-own">LOGÍSTICA</span>
-                <div class="food-name">Chegada e Miraflores</div>
-                <p class="food-note">Transfer Airport Express. Jantar no Huaca Pucllana.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-num">02<span>Hist</span></div>
-            <div class="day-body">
-                <span class="tag tag-own">POR CONTA</span>
-                <div class="food-name">Centro & Barranco</div>
-                <p class="food-note">Free Tour (Civitatis) + Tarde em Barranco.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-num">03<span>Full</span></div>
-            <div class="day-body">
-                <span class="tag tag-guru">GURU EXPLORERS</span>
-                <div class="food-name">Paracas & Huacachina</div>
-                <p class="food-note">Passeio de dia inteiro (saída 4h). Retorno a Lima.</p>
-            </div>
-        </div>
-
-        <div class="geo-city-title">📍 Cusco & Vale</div>
-        <div class="day-card">
-            <div class="day-num">04<span>Cus</span></div>
-            <div class="day-body">
-                <span class="tag tag-rest" style="background:#FCE7F3; color:#9D174D;">ACLIMAÇÃO</span>
-                <div class="food-name">Voo e Descanso</div>
-                <p class="food-note">Chegada em Cusco. Nada de esforço hoje.</p>
-            </div>
-        </div>
-        <div class="day-card">
-            <div class="day-num">07<span>Slow</span></div>
-            <div class="day-body">
-                <span class="tag tag-own">RELAX</span>
-                <div class="food-name">Ollanta → Trem à Tarde</div>
-                <p class="food-note">Manhã livre em Ollantaytambo. Almoço no El Albergue. Trem Vistadome ~15h.</p>
-            </div>
-        </div>
-        <p style="text-align:center; color:var(--text-sub); font-size:12px;">... ver logística de malas na aba Logística ...</p>
-    </div>
-
-    <!-- ABA 2: GASTRONOMIA (BASEADO NAS DICAS DO PDF) -->
-    <div id="gastronomia" class="tab-content">
         
-        <!-- LIMA -->
-        <div class="geo-city-title">🍴 Lima: O Coração Gastronômico</div>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Mundo / Nikkei</span>
-                </div>
-                <div class="food-name">Maido & Osaka</div>
-                <p class="food-note">Os mais famosos do mundo. Fusão japonês + peruano. Reservar com 2-3 meses de antecedência.</p>
-                <span class="food-tag">✨ Experiência da Vida</span>
-            </div>
+        <div class="city-divider">📍 Lima</div>
 
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Frutos do Mar</span>
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>01</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">CHEGADA</span>
+                    <div>Transfer e Miraflores</div>
                 </div>
-                <div class="food-name">La Mar</div>
-                <p class="food-note">O ceviche mais famoso de Gastón Acurio. Não aceita reserva e costuma lotar. Vá para o almoço cedo.</p>
-                <span class="food-tag">⭐ Imperdível</span>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Manhã/Tarde:</b> Desembarque em Lima. Pegar o <b>Airport Express</b> (guichê azul) para Miraflores (~20 soles). Check-in no hotel.</p>
+                <p><b>Atividades:</b> Caminhada leve pelo Malecón de Miraflores e Parque del Amor. Shopping Larcomar para ver o pôr do sol no Pacífico.</p>
+                <div class="food-tip">🍴 <b>Jantar: Huaca Pucllana.</b> Reserve para as 19:30/20:00 para ver as ruínas iluminadas.</div>
             </div>
+        </details>
 
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Street Food / Raiz</span>
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>02</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">CULTURA</span>
+                    <div>Centro Histórico e Barranco</div>
                 </div>
-                <div class="food-name">Al Toque Pez</div>
-                <p class="food-note">Do chef Toshi. Local pequeno (9 cadeiras), fila rápida. Comida de alta qualidade por preço de rua.</p>
-                <span class="food-tag">💰 Ótimo Preço</span>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Manhã:</b> Free Walking Tour (Civitatis) no Centro Histórico. Plaza Mayor, Catedral e Convento San Francisco (Catacumbas).</p>
+                <p><b>Tarde:</b> Bairro boêmio de Barranco. Ponte dos Suspiros e murais de arte urbana.</p>
+                <div class="food-tip">🍴 <b>Almoço: Punto Azul</b> (Miraflores). <br>🍴 <b>Jantar Especial: Maido ou Osaka</b> (Reserva obrigatória!).</div>
             </div>
+        </details>
 
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Visual / Especial</span>
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>03</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">TOUR</span>
+                    <div>Paracas e Huacachina (Full Day)</div>
                 </div>
-                <div class="food-name">Huaca Pucllana</div>
-                <p class="food-note">Localizado dentro de um sítio arqueológico. Reserve para o jantar para ver as ruínas iluminadas.</p>
-                <span class="food-tag">📸 Visual Nota 10</span>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>04:00:</b> Saída com a Guru Explorers. Dia intenso mas inesquecível.</p>
+                <ul class="locais-lista">
+                    <li><b>Ilhas Ballestas:</b> Passeio de barco para ver leões marinhos e pinguins.</li>
+                    <li><b>Ica:</b> Almoço e degustação de Pisco.</li>
+                    <li><b>Oásis de Huacachina:</b> Buggy no deserto e Sandboard.</li>
+                </ul>
+                <p><b>22:30:</b> Retorno a Lima. Peça um <b>La Lucha Sanguchería</b> pelo delivery.</p>
             </div>
+        </details>
 
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Tradicional / Crioula</span>
-                </div>
-                <div class="food-name">Isolina Taberna</div>
-                <p class="food-note">Em Barranco. Comida caseira peruana servida em porções generosas. O Lomo Saltado é icônico.</p>
-            </div>
+        <div class="city-divider">📍 Cusco e Vale Sagrado</div>
 
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Doces / Rápido</span>
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>04</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-rest">ALTITUDE</span>
+                    <div>Voo para Cusco e Aclimatação</div>
                 </div>
-                <div class="food-name">Manolo & La Lucha</div>
-                <p class="food-note">Manolo: Melhores churros. La Lucha: Sanduíches peruanos perfeitos para um lanche rápido.</p>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Manhã:</b> Voo Lima → Cusco. Transfer oficial (~30 soles).</p>
+                <p><b>Tarde:</b> <b>DESCANSO TOTAL.</b> A altitude (3.400m) é real. Beba chá de coca, água e evite álcool.</p>
+                <p><b>Noite:</b> Caminhada curta até a Plaza de Armas. Compre balas de coca e sorojchi pills.</p>
             </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>05</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">TOUR</span>
+                    <div>City Tour Arqueológico</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Tarde:</b> Tour com a Guru Explorers pelas ruínas próximas:</p>
+                <ul class="locais-lista">
+                    <li><b>Qorikancha:</b> O Templo do Sol.</li>
+                    <li><b>Saqsaywaman:</b> Fortaleza de pedras gigantes.</li>
+                    <li>Qenqo, Puca Pucara e Tambomachay.</li>
+                </ul>
+                <div class="food-tip">🍴 <b>Jantar: Morena Peruvian Kitchen.</b> Pratos modernos e deliciosos.</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>06</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">VALE</span>
+                    <div>Vale Sagrado (Pernoite em Ollanta)</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Logística:</b> Leve apenas a mochila de 2 dias. Deixe a mala grande no hotel de Cusco.</p>
+                <ul class="locais-lista">
+                    <li><b>Chinchero:</b> Demonstração de tecelagem.</li>
+                    <li><b>Salineras de Maras:</b> Mais de 3 mil poços de sal.</li>
+                    <li><b>Moray:</b> Laboratório agrícola inca.</li>
+                </ul>
+                <p><b>Fim do dia:</b> Check-in em <b>Ollantaytambo</b> (Tikawasi Ollanta 2).</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>07</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">RELAX</span>
+                    <div>Ollantaytambo → Águas Calientes</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Manhã:</b> Acorde sem despertador. Passeie pelas ruelas incas. Suba ao <b>Pinkuylluna</b> se tiver energia.</p>
+                <p><b>Almoço:</b> <b>El Albergue</b> (na estação de trem). Farm-to-table incrível.</p>
+                <p><b>Tarde:</b> Trem <b>Vistadome</b> (panorâmico) para Águas Calientes. Noite na vila aos pés de Machu Picchu.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>08</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">SONHO</span>
+                    <div>Machu Picchu</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Madrugada:</b> Ônibus para a cidadela. Tour guiado (Circuito 2).</p>
+                <p><b>Tarde:</b> Almoço em Águas Calientes e trem de volta. Transfer da estação de volta ao seu hotel em Cusco.</p>
+                <p><b>Logística:</b> Recuperar as malas grandes que ficaram guardadas no hotel de Cusco.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>09</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-rest">RELAX</span>
+                    <div>Cusco: Dia de Recuperação</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Livre:</b> Dia estratégico para recuperar as pernas. Visite o bairro de <b>San Blas</b>, o Mercado de San Pedro e o ChocoMuseo.</p>
+                <div class="food-tip">🍴 <b>Almoço: Green Point.</b> (Vegano, pátio lindo e comida sensacional).</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>10</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">TOUR</span>
+                    <div>Montanha Colorida (Palcoyo)</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Saída:</b> 04:30. Sugerimos <b>Palcoyo</b> (3 montanhas coloridas) em vez de Vinicunca por ser muito mais fácil de caminhar e menos lotado.</p>
+                <p>Visual impactante a quase 5.000m de altitude. Retorno a Cusco no fim da tarde.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>11</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-guru">TOUR</span>
+                    <div>Lagoa Humantay</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Caminhada:</b> Um pouco íngreme até a lagoa glacial azul turquesa. Cavalos disponíveis para aluguel se estiverem exaustas.</p>
+                <div class="food-tip">🍴 <b>Jantar de Despedida: Chicha</b> (Restaurante de Gastón Acurio).</div>
+            </div>
+        </details>
+
+        <div class="city-divider">📍 Arequipa</div>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>12</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">VÔO</span>
+                    <div>Voo Cusco → Arequipa</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p>Transfer para o aeroporto. Voo curto para a "Cidade Branca".</p>
+                <p>Check-in perto da Plaza de Armas. Arequipa é mais baixa e o ar é mais fácil de respirar aqui.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>13</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">CULTURA</span>
+                    <div>Monastério de Santa Catalina</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p><b>Manhã:</b> Visita ao Monastério (uma cidade dentro da cidade, todo colorido). Reserve 2h30 para ver tudo com calma.</p>
+                <p><b>Tarde:</b> Mirante de Yanahuara para ver o vulcão Misti perfeitamente.</p>
+                <div class="food-tip">🍴 <b>Jantar: El Buda Profano.</b> Sushi Nikkei excelente em um casarão histórico.</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>14</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">LAZER</span>
+                    <div>Mercado San Camilo e Despedida</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p>Dia para compras finais: temperos, queijos e artesanato. Passeio pelo bairro de San Lázaro.</p>
+                <div class="food-tip">🍴 <b>Almoço:</b> Experimentar o <b>Rocoto Relleno</b> em uma picantería tradicional.</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                <div class="day-badge"><span>JUL</span><b>15</b></div>
+                <div class="day-info">
+                    <span class="day-tag t-own">RETORNO</span>
+                    <div>Arequipa → Lima → Brasil</div>
+                </div>
+                <span>▼</span>
+            </summary>
+            <div class="expanded-content">
+                <p>Transfer para o aeroporto de Arequipa. Conexão em Lima e voo internacional de volta.</p>
+            </div>
+        </details>
+
+    </div>
+
+    <!-- ABA GASTRONOMIA -->
+    <div id="gastronomia" class="tab-content">
+        <div class="city-divider">🍴 Onde Comer (Destaques)</div>
+        <div class="food-card">
+            <span class="food-cat">LIMA · ALTA GASTRONOMIA</span>
+            <div style="font-weight:700; margin-top:5px;">Maido, Osaka ou Mérito</div>
+            <p style="font-size:13px; color:var(--text-sub);">As melhores experiências Nikkei e Contemporânea do mundo. Reserva com 60 dias de antecedência é essencial.</p>
         </div>
-
-        <!-- CUSCO & VALE -->
-        <div class="geo-city-title">🍴 Cusco & Vale Sagrado</div>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Moderna / Peruana</span>
-                </div>
-                <div class="food-name">Morena Peruvian Kitchen</div>
-                <p class="food-note">Muito bem avaliado. Pratos coloridos e saborosos perto da Plaza de Armas.</p>
-                <span class="food-tag">❤️ Favorito dos Viajantes</span>
-            </div>
-
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Vegano / Jardim</span>
-                </div>
-                <div class="food-name">Green Point</div>
-                <p class="food-note">Mesmo que não sejam veganos, vale a pena. Ambiente lindo com árvores e comida surpreendente.</p>
-            </div>
-
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Vale Sagrado (Ollanta)</span>
-                </div>
-                <div class="food-name">El Albergue</div>
-                <p class="food-note">Localizado na estação de trem. Perfeito para o almoço do Dia 07 antes de embarcar.</p>
-                <span class="food-tag">🚂 Comodidade Total</span>
-            </div>
+        <div class="food-card">
+            <span class="food-cat">LIMA · FRUTOS DO MAR</span>
+            <div style="font-weight:700; margin-top:5px;">Punto Azul ou La Mar</div>
+            <p style="font-size:13px; color:var(--text-sub);">Onde o ceviche é rei. La Mar não aceita reservas, chegue cedo.</p>
         </div>
-
-        <!-- AREQUIPA -->
-        <div class="geo-city-title">🍴 Arequipa</div>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Alta Gastronomia</span>
-                </div>
-                <div class="food-name">Chicha</div>
-                <p class="food-note">Restaurante de Gastón Acurio focado em ingredientes locais de Arequipa.</p>
-            </div>
-            <div class="food-card">
-                <div class="food-header">
-                    <span class="food-cat">Nikkei / Sushi</span>
-                </div>
-                <div class="food-name">El Buda Profano</div>
-                <p class="food-note">Melhor sushi de Arequipa em um casarão de pedra vulcânica branca.</p>
-            </div>
+        <div class="food-card">
+            <span class="food-cat">CUSCO · FAVORITOS</span>
+            <div style="font-weight:700; margin-top:5px;">Morena Kitchen & Green Point</div>
+            <p style="font-size:13px; color:var(--text-sub);">Morena para pratos peruanos lindos e saborosos. Green Point para um ambiente de jardim inesquecível.</p>
+        </div>
+        <div class="food-card">
+            <span class="food-cat">AREQUIPA · TRADICIONAL</span>
+            <div style="font-weight:700; margin-top:5px;">Chicha por Gastón Acurio</div>
+            <p style="font-size:13px; color:var(--text-sub);">O lugar para provar a culinária arequipeña com um toque de chef.</p>
         </div>
     </div>
 
-    <!-- ABA 3: LOGÍSTICA (INCLUINDO AS MALAS) -->
+    <!-- ABA LOGÍSTICA -->
     <div id="logistica" class="tab-content">
         <div class="info-card">
-            <h3>🎒 A Estratégia das Malas</h3>
-            <p><b>Cusco → MP:</b> O trem NÃO aceita malas grandes. </p>
-            <ul>
-                <li>1. Deixe as malas grandes no guarda-volumes do hotel em Cusco (grátis).</li>
-                <li>2. Leve apenas uma mochila para os 2 dias (Ollanta + MP).</li>
-                <li>3. Recupere a mala grande ao voltar para Cusco no Dia 08.</li>
-            </ul>
+            <h3>🧳 Estratégia de Malas (Sacred Valley)</h3>
+            <p>O trem para Machu Picchu não permite malas grandes. </p>
+            <p>• Deixe as malas no hotel de Cusco (Luggage storage é grátis).</p>
+            <p>• Vá para o Vale Sagrado apenas com uma mochila de 2 dias.</p>
         </div>
-
         <div class="info-card">
-            <h3>💰 Dinheiro & Câmbio</h3>
-            <p>• Banco de la Nación (MultiRed) não cobra taxa para sacar até 400 soles.</p>
-            <p>• Leve dinheiro vivo para gorjetas de Free Tours.</p>
-            <p>• Cartão Astropay/Nomad/Wise funcionam bem em restaurantes.</p>
+            <h3>💰 Dinheiro e Câmbio</h3>
+            <p>• Banco MultiRed (Banco de la Nación) não cobra taxas para saques.</p>
+            <p>• Wise/Nomad/Astropay são amplamente aceitos em restaurantes.</p>
+            <p>• Tenha sempre dinheiro vivo para gorjetas e mercados pequenos.</p>
         </div>
-
         <div class="info-card">
-            <h3>🚑 Saúde na Altitude</h3>
-            <p>• Comprar balas de coca e "Sorojchi Pills" em qualquer farmácia de Cusco.</p>
-            <p>• Água de Florida: Cheirar para aliviar náuseas.</p>
-            <p>• Beber 3L de água por dia.</p>
+            <h3>🚑 Saúde (Altitude)</h3>
+            <p>• Beber muita água (3L+).</p>
+            <p>• Comprar "Sorojchi Pills" e Balas de Coca logo na chegada.</p>
+            <p>• Evitar carne vermelha e álcool nas primeiras 48h em Cusco.</p>
         </div>
     </div>
 
