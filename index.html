@@ -7,8 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
 :root {
-    --peru-red: #B33C2E;
-    --peru-ochre: #D18B47;
+    /* Novo Laranja mais claro e vibrante */
+    --peru-orange: #F18F01; 
+    --peru-orange-light: #FDEBD0;
     --peru-stone: #4A443F;
     --peru-cream: #FDF8F3;
     --peru-turquoise: #2A9D8F;
@@ -20,7 +21,6 @@
     --radius: 14px;
 }
 
-/* 1. ESTRUTURA DO LAYOUT LATERAL */
 body { 
     font-family: 'Inter', sans-serif; 
     background: var(--bg); 
@@ -31,14 +31,14 @@ body {
     margin: 0;
 }
 
-/* LATERAL FIXA */
+/* SIDEBAR */
 aside {
     width: 320px;
     height: 100vh;
     position: fixed;
     left: 0; top: 0;
     background: var(--peru-stone);
-    border-right: 6px solid var(--peru-red);
+    border-right: 6px solid var(--peru-orange);
     display: flex;
     flex-direction: column;
     z-index: 1000;
@@ -58,31 +58,25 @@ aside img {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Mudado de space-between para flex-start */
+    justify-content: flex-start;
     background: linear-gradient(to top, rgba(0,0,0,0.85) 30%, transparent 80%);
     color: white;
 }
 
-/* CONTEÚDO À DIREITA */
 main {
     flex: 1;
-    margin-left: 320px; /* Margem para não ficar sob a lateral */
+    margin-left: 320px; 
     padding: 20px 40px 100px 40px;
 }
 
 .container { max-width: 900px; margin: 0 auto; }
 
-/* 2. MENU VERTICAL */
+/* MENU LATERAL */
 .nav-tabs-sidebar {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 25px; /* Era 40px, agora 25px para ficar mais alto */
-}
-        .sidebar-footer {
-    margin-top: auto; 
-    font-size: 10px; 
-    opacity: 0.6;
+    margin-top: 25px;
 }
 
 .tab-btn {
@@ -98,25 +92,19 @@ main {
     cursor: pointer;
     text-align: left;
     transition: 0.3s;
-    letter-spacing: 1px;
 }
 
 .tab-btn.active { 
-    background: var(--peru-red); 
-    border-color: var(--peru-red); 
-    box-shadow: 0 8px 20px rgba(179, 60, 46, 0.4);
+    background: var(--peru-orange); 
+    border-color: var(--peru-orange); 
+    box-shadow: 0 8px 20px rgba(241, 143, 1, 0.3);
 }
 
-/* 3. VISUAL DOS CARDS E CONTEÚDO */
-.tab-content { display: none; animation: fadeIn 0.4s ease; }
-.tab-content.active { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+/* CARDS DO ROTEIRO COM FOTO */
 .city-label { 
     font-family: 'Playfair Display', serif; font-size: 1.8rem; 
-    margin: 40px 0 20px 0; color: var(--peru-red); 
-    border-bottom: 2px solid #E5D6C8; padding-bottom: 10px;
+    margin: 40px 0 20px 0; color: var(--peru-orange); 
+    border-bottom: 2px solid var(--peru-orange-light); padding-bottom: 10px;
 }
 
 details { 
@@ -126,12 +114,22 @@ details {
 }
 
 summary { 
-    padding: 20px; list-style: none; cursor: pointer; 
+    padding: 15px 20px; list-style: none; cursor: pointer; 
     display: flex; align-items: center; gap: 15px; font-weight: 700;
 }
 summary::-webkit-details-marker { display: none; }
 
-/* Setinha */
+/* Nova miniatura da foto no card */
+.card-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #eee; /* Cor de fundo enquanto não tem foto */
+    flex-shrink: 0;
+    border: 1px solid #eee;
+}
+
 summary::after { 
     content: '▼'; margin-left: auto; color: var(--peru-ochre); 
     font-size: 12px; transition: 0.3s; 
@@ -139,10 +137,10 @@ summary::after {
 details[open] summary::after { transform: rotate(180deg); }
 
 .day-num-box { 
-    background: var(--peru-cream); color: var(--peru-red); 
+    background: var(--peru-orange-light); color: var(--peru-orange); 
     min-width: 55px; height: 55px; border-radius: 12px; 
     display: flex; flex-direction: column; align-items: center; justify-content: center; 
-    font-size: 10px; border: 1.5px solid var(--peru-red);
+    font-size: 10px; border: 1.5px solid var(--peru-orange);
 }
 .day-num-box b { font-size: 18px; line-height: 1; }
 
@@ -155,17 +153,15 @@ details[open] summary::after { transform: rotate(180deg); }
 .expanded-content { padding: 0 20px 20px 20px; border-top: 1px solid #F1F5F9; font-size: 14.5px; color: var(--text-sub); }
 .tip-box { background: #FFFBEB; border-radius: 10px; padding: 12px; margin-top: 15px; border-left: 4px solid var(--peru-gold); color: #92400E; }
 
-/* Gastronomia Grid */
-.food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-.food-card { background: var(--surface); border-radius: var(--radius); padding: 20px; border: 1px solid #E5E7EB; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-.food-category { position: absolute; top: 0; right: 20px; background: var(--peru-red); color: white; padding: 4px 10px; font-size: 9px; font-weight: 800; border-radius: 0 0 8px 8px; text-transform: uppercase; }
+/* Gastronomia e Logística */
+.food-card { background: var(--surface); border-radius: var(--radius); padding: 20px; border: 1px solid #E5E7EB; position: relative; }
+.food-category { position: absolute; top: 0; right: 20px; background: var(--peru-orange); color: white; padding: 4px 10px; font-size: 9px; font-weight: 800; border-radius: 0 0 8px 8px; text-transform: uppercase; }
+.log-card { background: var(--surface); padding: 25px; border-radius: var(--radius); margin-bottom: 15px; border-top: 5px solid var(--peru-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+.sidebar-footer { margin-top: auto; font-size: 10px; opacity: 0.6; }
 
-.log-card { background: var(--surface); padding: 25px; border-radius: var(--radius); margin-bottom: 15px; border-top: 5px solid var(--peru-red); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-
-/* Ajuste Mobile */
 @media (max-width: 1000px) {
     body { flex-direction: column; }
-    aside { width: 100%; height: 350px; position: relative; border-right: none; border-bottom: 6px solid var(--peru-red); }
+    aside { width: 100%; height: 350px; position: relative; border-right: none; border-bottom: 6px solid var(--peru-orange); }
     main { margin-left: 0; padding: 20px; }
     .nav-tabs-sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 10px; margin-top: 20px; }
     .tab-btn { white-space: nowrap; }
@@ -199,10 +195,11 @@ details[open] summary::after { transform: rotate(180deg); }
         <!-- ABA 1: ROTEIRO -->
         <div id="roteiro" class="tab-content active">
             <div class="city-label">📍 LIMA · 3 Noites</div>
-
+<!-- DIA 1 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>01</b></div>
+                    <img src="dia1.jpg" class="card-thumb" alt="Dia 1">
                     <div class="day-header-info">
                         <span class="day-tag tag-voo">VOO / TRASLADO</span>
                         <div class="day-title">Chegada em Miraflores</div>
@@ -214,10 +211,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Jantar: Huaca Pucllana</b>. Reserve mesa com vista para as ruínas iluminadas.</div>
                 </div>
             </details>
-
+<!-- DIA 2 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>02</b></div>
+                    <img src="dia2.jpg" class="card-thumb" alt="Dia 2">
                     <div class="day-header-info">
                         <span class="day-tag tag-own">POR CONTA</span>
                         <div class="day-title">Centro Histórico & Barranco</div>
@@ -229,10 +227,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Almoço:</b> Punto Azul.<br><b>🍽️ Jantar:</b> Maido ou Osaka.</div>
                 </div>
             </details>
-
+<!-- DIA 3 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>03</b></div>
+                    <img src="dia3.jpg" class="card-thumb" alt="Dia 3">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Paracas & Huacachina</div>
@@ -242,12 +241,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p><b>Full Day:</b> Ilhas Ballestas e Oásis de Huacachina. Buggies e sandboard.</p>
                 </div>
             </details>
-
+<!-- DIA 4 -->
             <div class="city-label">📍 CUSCO · Base Central</div>
 
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>04</b></div>
+                    <img src="dia4.jpg" class="card-thumb" alt="Dia 4">
                     <div class="day-header-info">
                         <span class="day-tag tag-voo">VOO / TRASLADO</span>
                         <div class="day-title">Lima → Cusco (Aclimatação)</div>
@@ -257,10 +257,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p><b>Crucial:</b> Descanso absoluto. Beba chá de coca e compre balas de coca.</p>
                 </div>
             </details>
-
+<!-- DIA 5 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>05</b></div>
+                    <img src="dia5.jpg" class="card-thumb" alt="Dia 5">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">City Tour Arqueológico</div>
@@ -271,10 +272,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Jantar: Morena Peruvian Kitchen</b>.</div>
                 </div>
             </details>
-
+<!-- DIA 6 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>06</b></div>
+                    <img src="dia6.jpg" class="card-thumb" alt="Dia 6">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Vale Sagrado → Ollanta</div>
@@ -285,10 +287,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p><b>Malas:</b> Deixar malas grandes em Cusco. Levar apenas mochila de 2 dias.</p>
                 </div>
             </details>
-
+<!-- DIA 7 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>07</b></div>
+                    <img src="dia7.jpg" class="card-thumb" alt="Dia 7">
                     <div class="day-header-info">
                         <span class="day-tag tag-own">POR CONTA</span>
                         <div class="day-title">Ollantaytambo → Águas Calientes</div>
@@ -299,10 +302,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Almoço: El Albergue</b> (estação).</div>
                 </div>
             </details>
-
+<!-- DIA 8 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>08</b></div>
+                    <img src="dia8.jpg" class="card-thumb" alt="Dia 8">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Machu Picchu (O Grande Dia)</div>
@@ -312,10 +316,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p>Tour guiado na cidadela. Retorno a Cusco à noite.</p>
                 </div>
             </details>
-
+<!-- DIA 9 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>09</b></div>
+                    <img src="dia9.jpg" class="card-thumb" alt="Dia 9">
                     <div class="day-header-info">
                         <span class="day-tag tag-own">POR CONTA</span>
                         <div class="day-title">Cusco Livre (Recuperação)</div>
@@ -326,10 +331,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Almoço: Green Point</b>.</div>
                 </div>
             </details>
-
+<!-- DIA 10 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>10</b></div>
+                    <img src="dia10.jpg" class="card-thumb" alt="Dia 10">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Montanha Colorida (Palcoyo)</div>
@@ -339,10 +345,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p><b>Palcoyo:</b> 3 montanhas coloridas, menos esforço que Vinicunca.</p>
                 </div>
             </details>
-
+<!-- DIA 11 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>11</b></div>
+                    <img src="dia11.jpg" class="card-thumb" alt="Dia 11">
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Lagoa Humantay</div>
@@ -352,12 +359,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p>Caminhada até a lagoa glacial turquesa.</p>
                 </div>
             </details>
-
+<!-- DIA 12 -->
             <div class="city-label">📍 AREQUIPA · Final da Trip</div>
 
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>12</b></div>
+                    <img src="dia12.jpg" class="card-thumb" alt="Dia 12">
                     <div class="day-header-info">
                         <span class="day-tag tag-voo">VOO / TRASLADO</span>
                         <div class="day-title">Cusco → Arequipa</div>
@@ -367,10 +375,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p>Voo curto. Chegada na Cidade Branca.</p>
                 </div>
             </details>
-
+<!-- DIA 13 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>13</b></div>
+                    <img src="dia13.jpg" class="card-thumb" alt="Dia 13">
                     <div class="day-header-info">
                         <span class="day-tag tag-gyg">GYG / CIVITATIS</span>
                         <div class="day-title">Santa Catalina & Yanahuara</div>
@@ -381,10 +390,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b>🍽️ Jantar: El Buda Profano</b>.</div>
                 </div>
             </details>
-
+<!-- DIA 14 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>14</b></div>
+                    <img src="dia14.jpg" class="card-thumb" alt="Dia 14">
                     <div class="day-header-info">
                         <span class="day-tag tag-own">POR CONTA</span>
                         <div class="day-title">Mercado San Camilo & Lazer</div>
@@ -394,10 +404,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     <p>Compras e gastronomia local (Rocoto Relleno).</p>
                 </div>
             </details>
-
+<!-- DIA 15 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>15</b></div>
+                    <img src="dia15.jpg" class="card-thumb" alt="Dia 15">
                     <div class="day-header-info">
                         <span class="day-tag tag-voo">RETORNO</span>
                         <div class="day-title">Retorno ao Brasil</div>
