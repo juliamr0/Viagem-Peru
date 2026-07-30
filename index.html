@@ -54,7 +54,7 @@ aside img {
 .sidebar-content {
     position: relative;
     z-index: 2;
-    padding: 40px 25px;
+    padding: 40px 25px 15px 25px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -154,7 +154,14 @@ details[open] summary::after { transform: rotate(180deg); }
 .food-card { background: var(--surface); border-radius: var(--radius); padding: 20px; border: 1px solid #E5E7EB; position: relative; }
 .food-category { position: absolute; top: 0; right: 20px; background: var(--peru-orange); color: white; padding: 4px 10px; font-size: 9px; font-weight: 800; border-radius: 0 0 8px 8px; text-transform: uppercase; }
 .log-card { background: var(--surface); padding: 25px; border-radius: var(--radius); margin-bottom: 15px; border-top: 5px solid var(--peru-orange); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
-.sidebar-footer { margin-top: auto; font-size: 10px; opacity: 0.6; }
+.sidebar-footer {
+    margin-top: auto; /* Esta "mola" empurra o texto para baixo */
+    margin-bottom: 0; /* Garante que não haja espaço extra abaixo do texto */
+    font-size: 10px; 
+    opacity: 0.6;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
 @media (max-width: 1000px) {
     body { flex-direction: column; }
