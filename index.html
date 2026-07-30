@@ -102,11 +102,8 @@ main {
 
 /* CARDS DO ROTEIRO COM FOTO */
 .city-label { 
-    font-family: 'Playfair Display', serif; font-size: 1.8rem; 
-    margin: 40px 0 20px 0; color: var(--peru-orange); 
-    border-bottom: 2px solid var(--peru-orange-light); padding-bottom: 10px;
+    display: none; 
 }
-
 details { 
     background: var(--surface); border-radius: var(--radius); 
     margin-bottom: 15px; border: 1px solid #E5D6C8; 
@@ -166,6 +163,47 @@ details[open] summary::after { transform: rotate(180deg); }
     .nav-tabs-sidebar { flex-direction: row; overflow-x: auto; padding-bottom: 10px; margin-top: 20px; }
     .tab-btn { white-space: nowrap; }
 }
+        /* --- NOVO: ESTILO CAPA DE REVISTA PARA AS CIDADES --- */
+.city-section {
+    margin-bottom: 50px; /* Espaço entre uma cidade e outra */
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden; /* Garante que a foto respeite os cantos arredondados */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.city-hero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.city-hero img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) contrast(1.1); /* Escurece a foto para o nome aparecer */
+}
+
+.city-hero h2 {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin: 0;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.city-content {
+    padding: 20px; /* Espaço interno para os cards não encostarem na borda */
+}
 </style>
 </head>
 <body>
@@ -193,9 +231,16 @@ details[open] summary::after { transform: rotate(180deg); }
     <div class="container">
 
         <!-- ABA 1: ROTEIRO -->
-        <div id="roteiro" class="tab-content active">
-            <div class="city-label">📍 LIMA </div>
-<!-- DIA 1 -->
+<div id="roteiro" class="tab-content active">
+
+    <!-- SEÇÃO LIMA -->
+    <div class="city-section">
+        <div class="city-hero">
+            <img src="lima-hero.jpg" alt="Lima">
+            <h2>Lima</h2>
+        </div>
+        <div class="city-content">
+            <!-- DIA 1 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>01</b></div>
@@ -207,27 +252,29 @@ details[open] summary::after { transform: rotate(180deg); }
                 </summary>
                 <div class="expanded-content">
                     <p><b>Chegada:</b> Desembarque em Lima. Sugestão de seguir para o guichê azul do <b>Airport Express</b> (Guichê azul, Terminal 2). Custo ~20 soles até Miraflores. Mais barato que táxi/uber</p>
-                    <p><b>Tarde:</b> Check-in no hotel. Almoço por Miraflores (sugstão al toque pez - Restaurante do chef Toshi → street food america latina - é pequeno (só tem 9 cadeiras), então costuma ter fila, mas anda rápido. Caminhada pelo bairro pelo bairro: Parque Kennedy; Ruas comerciais; Parque del Amor; Malecón; Parque Alfredo Salazar, Mirantes da Costa Verde, Shopping Larcomar </p>
-                    <div class="tip-box"><b>🍽️ Jantar e volta para hotel </b>. </div>
+                    <p><b>Tarde:</b> Check-in no hotel. Almoço por Miraflores (sugestão al toque pez - Restaurante do chef Toshi → street food america latina). Caminhada pelo bairro: Parque Kennedy; Parque del Amor; Malecón; Shopping Larcomar.</p>
+                    <div class="tip-box"><b>🍽️ Jantar e volta para hotel </b>.</div>
                 </div>
             </details>
-<!-- DIA 2 -->
+
+            <!-- DIA 2 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>02</b></div>
                     <img src="dia2.jpg" class="card-thumb" alt="Dia 2">
                     <div class="day-header-info">
-                        <span class="day-tag tag-gyg">GYG/CIVITATIS</span>
-                        <div class="day-title">Centro Histórico & Huaca Pucllana </div>
+                        <span class="day-tag tag-gyg">GYG / CIVITATIS</span>
+                        <div class="day-title">Centro Histórico & Huaca Pucllana</div>
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Manhã:</b> city tour pelo Centro Histórico de Lima. Sugestão civitatis que inclui Convento de San Francisco y Catacumbas (começa 9h e dura cerca de 3h30)</p>
+                    <p><b>Manhã:</b> City tour pelo Centro Histórico de Lima. Sugestão civitatis que inclui Convento de San Francisco y Catacumbas.</p>
                     <p><b>Tarde:</b> Huaca Pucllana.</p>
-                    <div class="tip-box"><b>🍽️ Almoço:</b> Restaurante Huaca Pucllana - reservar com antecedência.<br><b>🍽️ Jantar:</b> Astrid y Gastón - reservar com antecedência.</div>
+                    <div class="tip-box"><b>🍽️ Almoço:</b> Restaurante Huaca Pucllana - reservar com antecedência.<br><b>🍽️ Jantar:</b> Astrid y Gastón.</div>
                 </div>
             </details>
-<!-- DIA 3 -->
+
+            <!-- DIA 3 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>03</b></div>
@@ -242,9 +289,17 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="tip-box"><b> 🍽️Jantar: </b> Chegando tarde, algo rápido: La Lucha Sanguchería (fast food) ou delivery no hotel.</div>
                 </div>
             </details>
-<!-- DIA 4 -->
-            <div class="city-label">📍 CUSCO </div>
+        </div>
+    </div>
 
+    <!-- SEÇÃO CUSCO -->
+    <div class="city-section">
+        <div class="city-hero">
+            <img src="cusco-hero.jpg" alt="Cusco">
+            <h2>Cusco</h2>
+        </div>
+        <div class="city-content">
+            <!-- DIA 4 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>04</b></div>
@@ -255,13 +310,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Manhã:</b> visita ao museu larco e passeio por barranco (comprar pela internet antes - 45 soles inteira, 20 meia). Sugestão: comprar meia e se não der inteirar lá na hora.</p>
-                    <p><b>Tarde:</b> voo para cusco e descanso por lá. Beber chá de coca e comprar remédios e balas de coca</p>
-                    <p><b>Crucial:</b> Descanso absoluto. Beba chá de coca e compre balas de coca.</p>
-                    <div class="tip-box"><b>🍽️ Sugestão de almoço: Isolina Taberna Peruana (Lima - Barranco) e de Jantar: Greenpoint (mais leve - verificar se é perto da hospedagem)</b> .</div>
+                    <p><b>Manhã:</b> Visita ao museu larco e passeio por barranco.</p>
+                    <p><b>Tarde:</b> Voo para cusco e descanso por lá. <b>Crucial:</b> Descanso absoluto.</p>
+                    <div class="tip-box"><b>🍽️ Sugestão: Almoço Isolina (Barranco) e Jantar Greenpoint (Cusco)</b>.</div>
                 </div>
             </details>
-<!-- DIA 5 -->
+
+            <!-- DIA 5 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>05</b></div>
@@ -272,12 +327,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Manhã:</b> Saída para o city tour compartilhado (~5h), em ordem crescente de distância do centro: Qorikancha (templo no centro, ~45min) → Saqsaywamán (fortaleza com vista panorâmica da cidade) → Qenqo → Puca Pucara → Tambomachay (fonte de água sagrada).</p>
-                    <p><b>Tarde:</b> Almoço e tarde livre por San Blas (vielas, artesãos, mirantes → Calle Hatunrumiyoc (a famosa pedra dos doze ângulos)).
+                    <p><b>Manhã:</b> Saída para o city tour compartilhado (~5h): Qorikancha, Saqsaywamán, Qenqo, Puca Pucara e Tambomachay.</p>
+                    <p><b>Tarde:</b> San Blas e Calle Hatunrumiyoc.</p>
                     <div class="tip-box"><b>🍽️ Jantar: Morena Peruvian Kitchen</b>.</div>
                 </div>
             </details>
-<!-- DIA 6 -->
+
+            <!-- DIA 6 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>06</b></div>
@@ -288,11 +344,12 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p>Chinchero (tecelagens tradicionais, ruínas, feira de artesanato) → Salineras de Maras (milhares de piscinas de sal na encosta) → Moray (terraços circulares agrícolas). Almoço buffet típico em Urubamba. Pernoite em Ollantaytambo.</p>
-                    <p><b>Logística:</b> Conferir com Guru sobre roteiro adaptado terminando em Ollantaytambo e deixar malas grandes em Cusco. Levar apenas mochila de 2 dias.</p>
+                    <p>Chinchero, Salineras de Maras e Moray. Almoço em Urubamba. Pernoite em Ollantaytambo.</p>
+                    <p><b>Logística:</b> Levar apenas mochila de 2 dias. Malas grandes ficam em Cusco.</p>
                 </div>
             </details>
-<!-- DIA 7 -->
+
+            <!-- DIA 7 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>07</b></div>
@@ -303,12 +360,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Manhã livre em Ollanta</b> Subida ao Pinkuylluna grátis, ~1h ida e volta -> vista panorâmica das ruínas e do vilarejo.</p>
-                    <p><b>Tardea</b> Almoçar e pegar o trem <b>Vistadome</b> para Águas Calientes -> Ida em Vistadome (vista panorâmica de dia)</p>
-                    <div class="tip-box"><b>🍽️ Almoço: El Albergue</b> (estação). Jantar: Poncho's - Água Caliente.</div>
+                    <p><b>Manhã livre em Ollanta:</b> Subida ao Pinkuylluna.</p>
+                    <p><b>Tarde:</b> Trem <b>Vistadome</b> para Águas Calientes.</p>
+                    <div class="tip-box"><b>🍽️ Almoço: El Albergue (estação). Jantar: Poncho's.</b></div>
                 </div>
             </details>
-<!-- DIA 8 -->
+
+            <!-- DIA 8 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>08</b></div>
@@ -316,13 +374,14 @@ details[open] summary::after { transform: rotate(180deg); }
                     <div class="day-header-info">
                         <span class="day-tag tag-guru">GURU EXPLORER</span>
                         <div class="day-title">Machu Picchu (O Grande Dia)</div>
-                        </div>
+                    </div>
                 </summary>
                 <div class="expanded-content">
-                    <p>Tour guiado com a Guru Explorers, Circuito 2. Descida pra Águas Calientes e Trem Expedition de volta a Cusco.</p>
+                    <p>Tour guiado com a Guru Explorers, Circuito 2. Retorno a Cusco à noite.</p>
                 </div>
             </details>
-<!-- DIA 9 -->
+
+            <!-- DIA 9 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>09</b></div>
@@ -333,11 +392,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p>San Blas com mais tempo (lojas, ateliês de artesãos), ChocoMuseo, Mercado San Pedro. Dia leve antes da montanha.</p>
-                    <div class="tip-box"><b>🍽️ Jantar:</b> Green Point - se não tivermos ido - ou cicciolina.</div>
+                    <p>San Blas, Mercado San Pedro. Dia leve antes da montanha.</p>
                 </div>
             </details>
-<!-- DIA 10 -->
+
+            <!-- DIA 10 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>10</b></div>
@@ -348,10 +407,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Ver dúvida com Guru sobre Palcoyo:</b> 3 montanhas coloridas, menos esforço que Vinicunca.</p>
+                    <p>Alternativa menos exaustiva a Vinicunca.</p>
                 </div>
             </details>
-<!-- DIA 11 -->
+
+            <!-- DIA 11 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>11</b></div>
@@ -362,13 +422,21 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p>Caminhada até a lagoa glacial turquesa. Retorno a Cusco. Últimas compras, preparar a bagagem pro voo do dia seguinte. </p>
-                    <div class="tip-box"><b>🍽️ Jantar:</b> Morena ou Cicciolina - se ainda não tivermos ido. Outra sugestão: Uchu Peruvian Steakhouse.</div>
+                    <p>Caminhada até a lagoa glacial. Último jantar em Cusco.</p>
+                    <div class="tip-box"><b>🍽️ Jantar: Morena ou Uchu Steakhouse.</b></div>
                 </div>
             </details>
-<!-- DIA 12 -->
-            <div class="city-label">📍 AREQUIPA </div>
+        </div>
+    </div>
 
+    <!-- SEÇÃO AREQUIPA -->
+    <div class="city-section">
+        <div class="city-hero">
+            <img src="arequipa-hero.jpg" alt="Arequipa">
+            <h2>Arequipa</h2>
+        </div>
+        <div class="city-content">
+            <!-- DIA 12 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>12</b></div>
@@ -379,12 +447,13 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p><b>Manhã:</b> Voo curto (prefirir horário bem cedo pra aproveitar o dia inteiro). Chegada na Cidade Branca. Check-in em Arequipa e sair para Monastério de Santa Catalina </p>
-                    <p><b>Tarde:</b> Ir no Mercado de San Camilo, Almoçar e ir para um free walking tour na cidade. Fim de tarde: Subir ao Mirador de Yanahuara, para ver o vulcão El Misti e o pôr do sol
-                <div class="tip-box">🍽️ Experimentar "queso helado" e Jantar: 13 monjas (pizza)</div>
+                    <p><b>Manhã:</b> Voo para a Cidade Branca. Santa Catalina.</p>
+                    <p><b>Tarde:</b> Mercado de San Camilo e Mirador de Yanahuara.</p>
+                    <div class="tip-box"><b>🍽️ Jantar: 13 monjas (pizza)</b>.</div>
                 </div>
             </details>
-<!-- DIA 13 -->
+
+            <!-- DIA 13 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>13</b></div>
@@ -395,11 +464,11 @@ details[open] summary::after { transform: rotate(180deg); }
                     </div>
                 </summary>
                 <div class="expanded-content">
-                    <p> Ruta del Sillar y Culebrillas (procurar tour guiado a parte). Check-out e voo para lima. </p>
-                    <div class="tip-box"><b>Buscar voo Lima -> Brasil de noite</b>.</div>
+                    <p>Ruta del Sillar. Voo para Lima para conexão.</p>
                 </div>
             </details>
-<!-- DIA 14 -->
+
+            <!-- DIA 14 -->
             <details>
                 <summary>
                     <div class="day-num-box"><span>DIA</span><b>14</b></div>
@@ -414,6 +483,9 @@ details[open] summary::after { transform: rotate(180deg); }
                 </div>
             </details>
         </div>
+    </div>
+
+</div> <!-- Fim da aba roteiro -->
 
         <!-- ABA 2: GASTRONOMIA COMPLETA E ORGANIZADA -->
         <div id="gastronomia" class="tab-content">
